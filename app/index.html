@@ -29,12 +29,13 @@
 
   <div>Angular seed app: v<span app-version></span></div>
   <br />
-  <input type="text" data-ng-model="name"/> {{name}}
+  <input type="text" ng-model="searchText"/> {{searchText}}
   <br />
 
-  <div ng-init="nameList = ['Tobias', 'Matilda', 'Björn']"></div>
+  <div ng-init="customers = [{name: 'Tobias', city: 'Lund'}, {name: 'Matilda', city: 'Göteborg'},
+              {name: 'Björn', city: 'Lidköping'}]"></div>
   <ul>
-    <li ng-repeat="personName in nameList">{{personName}}</li>
+    <li ng-repeat="c in customers | filter:searchText | orderBy:'name'">{{c.name | uppercase}} - {{c.city}}</li>
   </ul>
 
   <!-- In production use:
