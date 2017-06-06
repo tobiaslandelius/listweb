@@ -14,6 +14,12 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 }]);
 
 myApp.controller('SimpleController', function ($scope) {
+
   $scope.customers = [{name: 'Tobias', city: 'Lund'}, {name: 'Matilda', city: 'Göteborg'},
     {name: 'Björn', city: 'Lidköping'}];
+
+  $scope.addCustomer = function () {
+    console.log("KEEEBAPP!");
+    $scope.customers.push({name: $scope.newCustomer.name, city: $scope.newCustomer.city});
+  }
 });
